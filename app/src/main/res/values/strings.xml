@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Simple Notes</string>
+    <string name="action_sign_out">Sign out</string>
+    <string name="tools_note_title">Note title</string>
+    <string name="tools_note_text">Text of the note</string>
+    <string name="tools_note_date">01.06.2019</string>
+    <string name="note_image_content_description">Attached image</string>
+    <string name="menu_action_save">Save</string>
+    <string name="menu_action_attach_image">Attach image</string>
+    <string name="menu_action_delete_note">Delete</string>
+    <string name="date_label">Creation date:</string>
+    <string name="login_input_hint">E-mail</string>
+    <string name="password_input_hint">Password</string>
+    <string name="repeat_password_input_hint">Repeat password</string>
+    <string name="sign_in_label">Sign in</string>
+    <string name="sign_up_label">Sign up</string>
+    <string name="wrong_account_text">Wrong e-mail or password!</string>
+    <string name="passwords_not_match">Passwords do not match!</string>
+    <string name="registration_failed">Account registration failed!</string>
+    <string name="unable_to_load_image">Unable to load image.</string>
+    <string name="failed">Some failure occurred…</string>
+    <string name="fill_fields_on_sign_in">Please, fill e-mail and password fields!</string>
+    <string name="dialog_loading_title">Loading</string>
+    <string name="dialog_auth_loading_text">Please, wait…</string>
+    <string name="sign_out_failed">Signing out failed</string>
+</resources>

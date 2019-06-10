@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "317682109555",
+    "firebase_url": "https://simple-notes-13379.firebaseio.com",
+    "project_id": "simple-notes-13379",
+    "storage_bucket": "simple-notes-13379.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317682109555:android:ad4395e72288bcbc",
+        "android_client_info": {
+          "package_name": "com.epam.training.simplenotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317682109555-gcjik1lqoaacdrqp7ajr2diuk64m1hvd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6G4KzobaZqzbhYecRVogju0_69G3gVcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317682109555-gcjik1lqoaacdrqp7ajr2diuk64m1hvd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
