@@ -67,6 +67,7 @@ class SignInFragment : Fragment() {
         val intent = Intent(context, MainActivity::class.java)
         intent.putExtra(EMAIL, emailText.text.toString())
         intent.putExtra(PASSWORD, passwordText.text.toString())
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
         activity?.finish()
     }
@@ -75,7 +76,7 @@ class SignInFragment : Fragment() {
         activity?.supportFragmentManager?.beginTransaction()?.replace(
             R.id.login_fragment_container,
             SignUpFragment()
-        )?.commit()
+        )?.addToBackStack(null)?.commit()
     }
 
 }

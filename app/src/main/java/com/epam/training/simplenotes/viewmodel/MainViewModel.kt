@@ -10,6 +10,7 @@ import com.epam.training.simplenotes.action.RecyclerViewAction
 import com.epam.training.simplenotes.action.RefreshingViewAction
 import com.epam.training.simplenotes.entity.VisibleNote
 import com.epam.training.simplenotes.model.MainModel
+import com.epam.training.simplenotes.util.SingleLiveEvent
 
 class MainViewModel(private val mainModel: MainModel) : ViewModel() {
 
@@ -21,7 +22,7 @@ class MainViewModel(private val mainModel: MainModel) : ViewModel() {
     val signOutResult: LiveData<Boolean>
         get() = _signOutResult
 
-    private val _activityViewAction = MutableLiveData<MainActivityViewAction>()
+    private val _activityViewAction = SingleLiveEvent<MainActivityViewAction>()
     val activityViewAction: LiveData<MainActivityViewAction>
         get() = _activityViewAction
 

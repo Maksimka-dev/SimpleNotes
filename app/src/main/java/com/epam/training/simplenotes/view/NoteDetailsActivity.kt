@@ -72,13 +72,17 @@ class NoteDetailsActivity : AppCompatActivity() {
                 noteViewModel.loadNote(this)
             }
         }
-        
+
+        Log.d("DialogHash", dialog.hashCode().toString())
         noteViewModel.editingNoteState.observe(this, Observer {
             when (it) {
 //                EditingNoteState.Start -> {
 //                    //start progress bar animation
+//                    dialog?.show()
 //                }
                 EditingNoteState.Success -> {
+//                    dialog?.hide()
+//                    dialog?.dismiss()
                     finish()
                 }
                 EditingNoteState.Error -> {
@@ -90,7 +94,7 @@ class NoteDetailsActivity : AppCompatActivity() {
         noteViewModel.dialogViewAction.observe(this, Observer {
             when (it) {
                 DialogViewAction.Show -> dialog?.show()
-                DialogViewAction.Hide -> dialog?.hide()
+                DialogViewAction.Hide -> dialog?.dismiss()
             }
         })
 
