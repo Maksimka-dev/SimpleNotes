@@ -15,6 +15,9 @@ import com.epam.training.simplenotes.util.isOnline
 import com.epam.training.simplenotes.viewmodel.LoginViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
+/**
+ * Fragment, that allows user to sing up to the application.
+ */
 class SignUpFragment : Fragment() {
 
     companion object {
@@ -66,15 +69,6 @@ class SignUpFragment : Fragment() {
                 Toast.makeText(context, R.string.passwords_not_match, Toast.LENGTH_LONG).show()
             else -> loginViewModel.registerAccount(emailText.text.toString(), passwordText.text.toString())
         }
-//        if (fieldsNotEmpty()) {
-//            if (passwordText.text.toString() == repeatPasswordText.text.toString()) {
-//                loginViewModel.registerAccount(emailText.text.toString(), passwordText.text.toString())
-//            } else {
-//                Toast.makeText(context, R.string.passwords_not_match, Toast.LENGTH_LONG).show()
-//            }
-//        } else {
-//            Toast.makeText(context, R.string.fill_fields_on_sign_in, Toast.LENGTH_LONG).show()
-//        }
     }
 
     private fun fieldsNotEmpty(): Boolean {

@@ -7,6 +7,10 @@ import com.epam.training.simplenotes.R
 import com.epam.training.simplenotes.viewmodel.LoginViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
+/**
+ * Activity, that contains [SignInFragment] or [SignUpFragment] and allows user to sing in or to sing up to the
+ * application respectively.
+ */
 class LoginActivity : AppCompatActivity() {
 
     private val loginViewModel: LoginViewModel by viewModel()

@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import com.epam.training.simplenotes.R
 import com.epam.training.simplenotes.entity.VisibleNote
 
+/**
+ * Adapter for RecyclerView in [MainActivity].
+ */
 class NotesRecyclerViewAdapter(
     var items: MutableList<VisibleNote>
 ) : RecyclerView.Adapter<NotesRecyclerViewAdapter.NoteViewHolder>() {
@@ -37,10 +40,17 @@ class NotesRecyclerViewAdapter(
         return items.size
     }
 
-    //ViewHolder
+    /**
+     * ViewHolder for [NotesRecyclerViewAdapter].
+     */
     class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val noteView = view.findViewById<NoteView>(R.id.note_view)
 
+        /**
+         * Sets up visible data to NoteViewHolder.
+         *
+         * @param note represents the note to display.
+         */
         fun display(note: VisibleNote) {
             noteView.setNoteTitle(note.title)
             noteView.setNoteText(note.text)
@@ -54,7 +64,17 @@ class NotesRecyclerViewAdapter(
         }
     }
 
+    /**
+     * Listener for RecyclerView items' events.
+     */
     interface NoteListener {
+        /**
+         * Represents an action to perform, when RecyclerView item is clicked.
+         *
+         * @param position represents the position of clicked item in RecyclerView.
+         * @param note represents the note, that this item of RecyclerView contains.
+         * @param view represents view holder.
+         */
         fun onNoteClicked(position: Int, note: VisibleNote, view: View)
     }
 }

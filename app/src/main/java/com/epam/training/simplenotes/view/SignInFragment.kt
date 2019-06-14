@@ -16,6 +16,9 @@ import com.epam.training.simplenotes.util.isOnline
 import com.epam.training.simplenotes.viewmodel.LoginViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
+/**
+ * Fragment, that allows user to sing in to the application.
+ */
 class SignInFragment : Fragment() {
 
     companion object {

@@ -12,6 +12,9 @@ import com.epam.training.simplenotes.entity.VisibleNote
 import com.epam.training.simplenotes.model.MainModel
 import com.epam.training.simplenotes.util.SingleLiveEvent
 
+/**
+ * ViewModel for MainActivity and its content.
+ */
 class MainViewModel(private val mainModel: MainModel) : ViewModel() {
 
     private val _recyclerViewAction = MutableLiveData<RecyclerViewAction>()
@@ -30,7 +33,10 @@ class MainViewModel(private val mainModel: MainModel) : ViewModel() {
     val refreshingAction: LiveData<RefreshingViewAction>
         get() = _refreshingAction
 
-
+    /**
+     * Calls to model to get a list of all saved user notes and notifies RecyclerView in MainActivity
+     * about data changes via LiveData.
+     */
     @UiThread
     fun loadUserNotes() {
         _refreshingAction.value = RefreshingViewAction.Start
@@ -45,16 +51,27 @@ class MainViewModel(private val mainModel: MainModel) : ViewModel() {
         )
     }
 
+    /**
+     * Calls to model to sign out from application.
+     */
     fun signOut() {
         mainModel.signOut {
             _signOutResult.postValue(true)
         }
     }
 
+    /**
+     * Allows MainActivity to create new note and redirect user to DetailsActivity.
+     */
     fun onFloatingButtonClicked() {
         _activityViewAction.value = MainActivityViewAction.GoToNewNoteDetails
     }
 
+    /**
+     * Allows MainActivity to redirect user to DetailsActivity and open selected note.
+     *
+     * @param note represents the note to edit.
+     */
     fun onNoteClicked(note: VisibleNote) {
         _activityViewAction.value = MainActivityViewAction.GoToExistingNoteDetails(note.id)
     }

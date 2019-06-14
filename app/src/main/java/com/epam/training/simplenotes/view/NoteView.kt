@@ -10,6 +10,9 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.epam.training.simplenotes.R
 
+/**
+ * Custom view, that contains visible note information, such as note's title, text and attached image.
+ */
 class NoteView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : RelativeLayout(context, attrs, defStyleAttr) {
@@ -41,22 +44,41 @@ class NoteView @JvmOverloads constructor(
         attributes.recycle()
     }
 
+    /**
+     * Allows to set up [noteTitle] TextView text.
+     */
     fun setNoteTitle(title: String) {
         noteTitle.text = title
     }
 
+    /**
+     * Allows to set up [noteText] TextView text.
+     */
     fun setNoteText(text: String) {
         noteText.text = text
     }
 
+    /**
+     * Allows to set up [noteDate] TextView text.
+     */
     fun setNoteDate(date: String) {
         noteDate.text = date
     }
 
+    /**
+     * Allows to set up [noteImage] ImageView.
+     *
+     * @param bitmap contains image, that will be shown in [noteImage] ImageView
+     */
     fun setNoteImage(bitmap: Bitmap) {
         noteImage.setImageBitmap(bitmap)
     }
 
+    /**
+     * Allows to set up [noteImage] ImageView.
+     *
+     * @param drawableResId contains resource id of an image, that will be shown in [noteImage] ImageView
+     */
     fun setNoteImage(drawableResId: Int) {
         val drawable: Drawable = resources.getDrawable(drawableResId, null)
         noteImage.setImageDrawable(drawable)

@@ -10,6 +10,9 @@ import com.epam.training.simplenotes.action.NoteFillViewAction
 import com.epam.training.simplenotes.entity.VisibleNote
 import com.epam.training.simplenotes.model.NoteDetailsModel
 
+/**
+ * ViewModel for NoteDetailsActivity and its content.
+ */
 class NoteDetailsViewModel(
     private val noteModel: NoteDetailsModel
 ) : ViewModel() {
@@ -28,6 +31,9 @@ class NoteDetailsViewModel(
 
     private var currentId: String? = null
 
+    /**
+     * Provides existing note id or generates new one for new note.
+     */
     fun getNoteId(): String {
         currentId?.let {
             return it
@@ -39,6 +45,10 @@ class NoteDetailsViewModel(
         }
     }
 
+    /**
+     * Calls to model to save note to database and notifies NoteDetailsActivity
+     * about start and end of operation for displaying loading dialog via LiveData.
+     */
     @UiThread
     fun saveNote(visibleNote: VisibleNote) {
         _dialogViewAction.value = DialogViewAction.Show
@@ -61,6 +71,10 @@ class NoteDetailsViewModel(
         _editingNoteState.postValue(EditingNoteState.Error)
     }
 
+    /**
+     * Calls to model to load note's info from database and notifies NoteDetailsActivity
+     * about start and end of operation for displaying loading dialog via LiveData.
+     */
     @UiThread
     fun loadNote(id: String) {
         _editingNoteState.value = EditingNoteState.Start
@@ -80,6 +94,10 @@ class NoteDetailsViewModel(
         )
     }
 
+    /**
+     * Calls to model to delete existing note from database and notifies NoteDetailsActivity
+     * about start and end of operation for displaying loading dialog via LiveData.
+     */
     fun onDeleteButtonClicked() {
         _editingNoteState.value = EditingNoteState.Start
         _dialogViewAction.value = DialogViewAction.Show

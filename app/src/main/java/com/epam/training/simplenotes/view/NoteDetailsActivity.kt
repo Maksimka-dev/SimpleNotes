@@ -25,6 +25,11 @@ import com.epam.training.simplenotes.util.isOnline
 import com.epam.training.simplenotes.viewmodel.NoteDetailsViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
+/**
+ * Activity, that represents detailed note information.
+ * Allows to edit note title and text, attach to note an image from gallery,
+ * save note to database or delete existing note from database.
+ */
 class NoteDetailsActivity : AppCompatActivity() {
 
     private companion object {
@@ -77,13 +82,7 @@ class NoteDetailsActivity : AppCompatActivity() {
         Log.d("DialogHash", dialog.hashCode().toString())
         noteViewModel.editingNoteState.observe(this, Observer {
             when (it) {
-//                EditingNoteState.Start -> {
-//                    //start progress bar animation
-//                    dialog?.show()
-//                }
                 EditingNoteState.Success -> {
-//                    dialog?.hide()
-//                    dialog?.dismiss()
                     finish()
                 }
                 EditingNoteState.Error -> {

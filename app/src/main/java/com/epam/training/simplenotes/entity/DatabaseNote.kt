@@ -1,5 +1,8 @@
 package com.epam.training.simplenotes.entity
 
+/**
+ * Represents note information in database.
+ */
 data class DatabaseNote(
     var id: String = "",
     var title: String = "",

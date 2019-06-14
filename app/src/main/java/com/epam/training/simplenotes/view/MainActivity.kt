@@ -21,6 +21,11 @@ import com.epam.training.simplenotes.entity.VisibleNote
 import com.epam.training.simplenotes.viewmodel.MainViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
+/**
+ * Activity, that contains a RecyclerView with all user's notes.
+ * Allows to open an existing note and to create a new one.
+ * Also allows to sing out of application.
+ */
 class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
 
     companion object {

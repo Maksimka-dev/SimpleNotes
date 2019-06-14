@@ -4,6 +4,9 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 
+/**
+ * Checks if is internet connection available.
+ */
 fun isOnline(context: Context?): Boolean {
     val connMgr = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val networkInfo: NetworkInfo? = connMgr.activeNetworkInfo
