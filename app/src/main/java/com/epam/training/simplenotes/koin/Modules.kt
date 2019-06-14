@@ -1,5 +1,7 @@
 package com.epam.training.simplenotes.koin
 
+import com.epam.training.simplenotes.glide.GlideApp
+import com.epam.training.simplenotes.glide.GlideRequests
 import com.epam.training.simplenotes.mapper.DatabaseToVisibleNoteMapper
 import com.epam.training.simplenotes.mapper.VisibleToDatabaseNoteMapper
 import com.epam.training.simplenotes.model.*
@@ -11,6 +13,8 @@ import com.epam.training.simplenotes.viewmodel.NoteDetailsViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import org.koin.android.ext.koin.androidApplication
+import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -22,7 +26,7 @@ val firebaseModule = module {
 }
 
 val mapperModule = module {
-    single<ImageLoader> { DefaultImageLoader(get()) }
+    single<ImageLoader> { DefaultImageLoader(get(), androidContext()) }
 
     single { DatabaseToVisibleNoteMapper(get()) }
     single { VisibleToDatabaseNoteMapper(get()) }
@@ -45,3 +49,7 @@ val mainModule = module {
     single<NoteDetailsModel> { DefaultNoteDetailsModel(auth, get(), get(), get(), get()) }
     viewModel { NoteDetailsViewModel(get()) }
 }
+
+//val glideModule = module {
+//    single { GlideApp.with(androidContext()) }
+//}

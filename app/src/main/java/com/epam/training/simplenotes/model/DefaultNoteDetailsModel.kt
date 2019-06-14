@@ -1,5 +1,6 @@
 package com.epam.training.simplenotes.model
 
+import android.util.Log
 import com.epam.training.simplenotes.DatabaseConstants.NOTES_COLLECTION_NAME
 import com.epam.training.simplenotes.DatabaseConstants.USERS_COLLECTION_NAME
 import com.epam.training.simplenotes.entity.DatabaseNote
@@ -9,7 +10,6 @@ import com.epam.training.simplenotes.mapper.VisibleToDatabaseNoteMapper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import java.util.*
 
 class DefaultNoteDetailsModel(
     private val auth: FirebaseAuth,
@@ -24,6 +24,12 @@ class DefaultNoteDetailsModel(
         onSuccess: () -> Unit,
         onError: (Throwable) -> Unit
     ) {
+        visibleNote.imageBitmap?.let {
+            getSavedImageUrl(visibleNote.id) { imageUrl ->
+                deleteImage(imageUrl)
+            }
+        }
+
         auth.currentUser?.let {
             toDatabaseNoteMapper.map(
                 visibleNote,
@@ -45,6 +51,42 @@ class DefaultNoteDetailsModel(
                     onError(exception)
                 }
             )
+        }
+    }
+
+    private fun getSavedImageUrl(
+        noteId: String,
+        onSuccess: (String?) -> Unit
+    ) {
+        auth.currentUser?.let { user ->
+            db.collection(USERS_COLLECTION_NAME)
+                .document(user.uid)
+                .collection(NOTES_COLLECTION_NAME)
+                .document(noteId)
+                .get()
+                .addOnSuccessListener {
+                    it.toObject(DatabaseNote::class.java)?.let { databaseNote ->
+                        onSuccess(databaseNote.imageUrl)
+                        Log.d("DELETING", databaseNote.imageUrl)
+                    }
+                }
+        }
+    }
+
+    private fun deleteImage(
+        imageUrl: String?
+    ) {
+//        var result = false
+
+        imageUrl?.let {
+            storage.reference.child(imageUrl).delete()
+                .addOnSuccessListener {
+                    Log.d("DELETING", "image deleted from storage")
+//                    result = true
+                }.addOnFailureListener {
+//                    result = false
+                    Log.d("DELETING", "failed to delete image from storage")
+                }
         }
     }
 
@@ -75,10 +117,8 @@ class DefaultNoteDetailsModel(
     }
 
     override fun newNoteId(): String {
-        Calendar.getInstance().let {
 
-            return "NOTE_${it.timeInMillis}"
-        }
+        return "NOTE_${System.currentTimeMillis()}"
     }
 
     override fun deleteNote(
@@ -86,31 +126,41 @@ class DefaultNoteDetailsModel(
         onSuccess: () -> Unit,
         onError: (Throwable) -> Unit
     ) {
+        getSavedImageUrl(noteId) { savedImageUrl ->
+            deleteImage(savedImageUrl)
+        }
+
         auth.currentUser?.let { user ->
             db.collection(USERS_COLLECTION_NAME)
                 .document(user.uid)
                 .collection(NOTES_COLLECTION_NAME)
                 .document(noteId)
-                .get().addOnSuccessListener {
-                    it.toObject(DatabaseNote::class.java)?.let { databaseNote ->
-                        db.collection(USERS_COLLECTION_NAME)
-                            .document(user.uid)
-                            .collection(NOTES_COLLECTION_NAME)
-                            .document(noteId)
-                            .delete()
-                            .addOnSuccessListener {
-                                databaseNote.imageUrl?.let { imageUrl ->
-                                    storage.reference.child(imageUrl).delete().addOnSuccessListener {
-                                        onSuccess()
-                                    }.addOnFailureListener { exception ->
-                                        onError(exception)
-                                    }
-                                } ?: onSuccess()
-                            }.addOnFailureListener { exception ->
-                                onError(exception)
-                            }
-                    } ?: onSuccess()
-                }.addOnFailureListener { exception ->
+                .delete()
+                .addOnSuccessListener {
+                    onSuccess()
+                }
+//                .get().addOnSuccessListener {
+//                    it.toObject(DatabaseNote::class.java)?.let { databaseNote ->
+//                        db.collection(USERS_COLLECTION_NAME)
+//                            .document(user.uid)
+//                            .collection(NOTES_COLLECTION_NAME)
+//                            .document(noteId)
+//                            .delete()
+//                            .addOnSuccessListener {
+//                                databaseNote.imageUrl?.let { imageUrl ->
+//                                    storage.reference.child(imageUrl).delete()
+//                                        .addOnSuccessListener {
+//                                            onSuccess()
+//                                        }.addOnFailureListener { exception ->
+//                                            onError(exception)
+//                                        }
+//                                } ?: onSuccess()
+//                            }.addOnFailureListener { exception ->
+//                                onError(exception)
+//                            }
+//                    } ?: onSuccess()
+//                }
+                .addOnFailureListener { exception ->
                     onError(exception)
                 }
         }

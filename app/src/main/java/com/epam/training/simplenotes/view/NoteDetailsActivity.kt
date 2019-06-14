@@ -21,6 +21,7 @@ import com.epam.training.simplenotes.action.DialogViewAction
 import com.epam.training.simplenotes.action.EditingNoteState
 import com.epam.training.simplenotes.action.NoteFillViewAction
 import com.epam.training.simplenotes.entity.VisibleNote
+import com.epam.training.simplenotes.util.isOnline
 import com.epam.training.simplenotes.viewmodel.NoteDetailsViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -112,7 +113,7 @@ class NoteDetailsActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
 
-        currentImageUri?.let{
+        currentImageUri?.let {
             outState?.putString(IMAGE_URI, it.toString())
         }
     }
@@ -141,13 +142,18 @@ class NoteDetailsActivity : AppCompatActivity() {
 
         return when (item?.itemId) {
             R.id.menu_action_save -> {
-                val note = VisibleNote(
-                    id = noteViewModel.getNoteId(),
-                    title = noteTitle.text.toString(),
-                    text = noteText.text.toString(),
-                    imageBitmap = currentBitmap
-                )
-                noteViewModel.saveNote(note)
+                if (isOnline(this)) {
+                    val note = VisibleNote(
+                        id = noteViewModel.getNoteId(),
+                        title = noteTitle.text.toString(),
+                        text = noteText.text.toString(),
+                        imageBitmap = currentBitmap
+                    )
+                    noteViewModel.saveNote(note)
+                } else {
+                    Toast.makeText(this, R.string.no_internet, Toast.LENGTH_LONG).show()
+                }
+
                 true
             }
             R.id.menu_action_attach_image -> {
@@ -156,7 +162,11 @@ class NoteDetailsActivity : AppCompatActivity() {
                 true
             }
             R.id.menu_action_delete_note -> {
-                noteViewModel.onDeleteButtonClicked()
+                if (isOnline(this)) {
+                    noteViewModel.onDeleteButtonClicked()
+                } else {
+                    Toast.makeText(this, R.string.no_internet, Toast.LENGTH_LONG).show()
+                }
 
                 true
             }

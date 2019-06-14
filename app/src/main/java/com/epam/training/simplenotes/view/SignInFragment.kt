@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.epam.training.simplenotes.R
+import com.epam.training.simplenotes.util.isOnline
 import com.epam.training.simplenotes.viewmodel.LoginViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -44,10 +45,14 @@ class SignInFragment : Fragment() {
         })
 
         signInButton.setOnClickListener {
-            if (fieldsNotEmpty()) {
-                loginViewModel.signIn(emailText.text.toString(), passwordText.text.toString())
+            if (isOnline(context)) {
+                if (fieldsNotEmpty()) {
+                    loginViewModel.signIn(emailText.text.toString(), passwordText.text.toString())
+                } else {
+                    Toast.makeText(context, R.string.fill_fields_on_sign_in, Toast.LENGTH_LONG).show()
+                }
             } else {
-                Toast.makeText(context, R.string.fill_fields_on_sign_in, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, R.string.no_internet, Toast.LENGTH_LONG).show()
             }
         }
 

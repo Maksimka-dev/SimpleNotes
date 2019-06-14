@@ -20,7 +20,7 @@ class DatabaseToVisibleNoteMapper(private val loader: ImageLoader) : Mapper<Data
         )
 
         noteFrom.imageUrl?.let {
-            loader.download(
+            loader.downloadWithGlide(
                 it,
                 { bitmap ->
                     visibleNote.imageBitmap = bitmap

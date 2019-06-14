@@ -15,4 +15,10 @@ interface ImageLoader {
         onSuccess: (Bitmap) -> Unit,
         onError: (Throwable) -> Unit
     )
+
+    fun downloadWithGlide(
+        fromUrl: String,
+        onSuccess: (Bitmap) -> Unit,
+        onError: (Throwable) -> Unit
+    )
 }
