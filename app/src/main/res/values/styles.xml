@@ -1,34 +1,19 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="SimpleNotesTheme" parent="Theme.AppCompat">
+    <style name="SimpleNotesTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-    </style>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
 
-    <style name="SimpleNotesTheme.Dark" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkDark</item>
-        <item name="colorAccent">@color/colorAccentDark</item>
-
-        <item name="toolbarStyle">@style/SimpleNotesTheme.Toolbar</item>
-        <item name="actionBarStyle">@style/SimpleNotesTheme.Toolbar</item>
-        <item name="buttonStyle">@style/SimpleNotesTheme.Button.Dark</item>
-        <item name="editTextStyle">@style/SimpleNotesTheme.EditText.Dark</item>
-        <item name="android:textViewStyle">@style/SimpleNotesTheme.TextView.Dark</item>
-        <item name="popupMenuStyle">@style/SimpleNotesTheme.PopupOverlay.Dark</item>
-    </style>
-
-    <style name="SimpleNotesTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimaryLight</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkLight</item>
-        <item name="colorAccent">@color/colorAccentLight</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
 
         <item name="toolbarStyle">@style/SimpleNotesTheme.Toolbar</item>
-        <item name="actionBarStyle">@style/SimpleNotesTheme.Toolbar</item>
-        <item name="buttonStyle">@style/SimpleNotesTheme.Button.Light</item>
-        <item name="editTextStyle">@style/SimpleNotesTheme.EditText.Light</item>
-        <item name="android:textViewStyle">@style/SimpleNotesTheme.TextView.Light</item>
-        <item name="popupMenuStyle">@style/SimpleNotesTheme.PopupOverlay.Light</item>
+        <item name="buttonStyle">@style/SimpleNotesTheme.Button</item>
+        <item name="editTextStyle">@style/SimpleNotesTheme.EditText</item>
+        <item name="android:textViewStyle">@style/SimpleNotesTheme.TextView</item>
+        <item name="popupMenuStyle">@style/SimpleNotesTheme.PopupOverlay</item>
     </style>
 
     <style name="SimpleNotesTheme.NoActionBar">
@@ -38,80 +23,45 @@
 
     <!-- Popup menu -->
     <style name="SimpleNotesTheme.PopupOverlay" parent="ThemeOverlay.AppCompat">
-        <item name="android:tint">@color/white</item>
+        <item name="android:textColor">@color/colorToolbarLines</item>
+        <item name="android:itemBackground">@color/colorPrimary</item>
     </style>
 
-    <style name="SimpleNotesTheme.PopupOverlay.Light" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:itemBackground">@color/colorPrimaryLight</item>
-    </style>
-
-    <style name="SimpleNotesTheme.PopupOverlay.Dark" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:itemBackground">@color/colorPrimaryLight</item>
-    </style>
-
-    <!-- Toolbar -->
+     <!--Toolbar -->
     <style name="SimpleNotesTheme.Toolbar" parent="Widget.AppCompat.Toolbar">
-        <!--<item name="android:background">?attr/colorPrimary</item>-->
-        <!--<item name="android:titleTextColor">@color/white</item>-->
-        <!--<item name="android:textColorPrimary">@color/white</item>-->
-        <!--<item name="android:paddingStart">4dp</item>-->
-        <item name="titleTextColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorToolbarLines</item>
     </style>
 
     <style name="SimpleNotesTheme.Toolbar.OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
-        <item name="android:tint">@color/white</item>
+        <item name="android:tint">@color/colorToolbarLines</item>
     </style>
 
     <!-- Edit text -->
     <style name="SimpleNotesTheme.EditText" parent="Widget.AppCompat.EditText">
-        <item name="colorControlNormal">#1BEB00</item>
-        <item name="colorControlActivated">@color/colorAccentLight</item>
-        <item name="colorControlHighlight">@color/average_gray</item>
-    </style>
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorEditTextHighlight</item>
 
-    <style name="SimpleNotesTheme.EditText.Light">
-        <item name="android:textColor">@color/dark_gray</item>
-
-    </style>
-
-    <style name="SimpleNotesTheme.EditText.Dark" >
-        <item name="android:textColor">@color/white</item>
-
+        <item name="android:textColor">@color/colorEditText</item>
     </style>
 
     <!-- Text view -->
     <style name="SimpleNotesTheme.TextView" parent="TextAppearance.AppCompat">
-
-    </style>
-
-    <style name="SimpleNotesTheme.TextView.Light" >
-        <item name="android:textColor">@color/dark_gray</item>
-
-    </style>
-
-    <style name="SimpleNotesTheme.TextView.Dark" >
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/colorEditText</item>
     </style>
 
     <!-- Button -->
     <style name="SimpleNotesTheme.Button" parent="Widget.AppCompat.Button">
-
-    </style>
-
-    <style name="SimpleNotesTheme.Button.Light" parent="Base.Widget.AppCompat.Button">
-        <item name="android:textColor">@color/black</item>
-    </style>
-
-    <style name="SimpleNotesTheme.Button.Dark" parent="Base.Widget.AppCompat.Button">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/colorToolbarLines</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
     </style>
 
     <!-- Floating button -->
     <style name="SimpleNotesTheme.FloatingButton" parent="Theme.AppCompat.Light">
-        <item name="colorAccent">?attr/colorPrimary</item>
-        <item name="android:src">@android:drawable/ic_input_add</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:src">@drawable/ic_input_add_24dp</item>
     </style>
 
 </resources>

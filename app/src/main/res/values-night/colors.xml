@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#22333B</color>
+    <color name="colorPrimaryDark">#0A0908</color>
+    <color name="colorAccent">#39B7DF</color>
+
+    <color name="colorToolbarLines">#EAE0D5</color>
+    <color name="colorNoteCardView">#2A3B44</color>
+
+    <color name="colorBackground">#344852</color>
+    <color name="colorEditTextHighlight">#B4B4B4</color>
+    <color name="colorEditText">#EAE0D5</color>
+
+</resources>

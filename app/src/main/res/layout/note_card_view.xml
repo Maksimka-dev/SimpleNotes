@@ -7,7 +7,7 @@
         android:layout_margin="4dp"
         app:cardElevation="5dp"
         app:cardCornerRadius="20dp"
-        app:cardBackgroundColor="#FFFDE7"
+        app:cardBackgroundColor="@color/colorNoteCardView"
 >
     <com.epam.training.simplenotes.view.NoteView
             android:id="@+id/note_view"

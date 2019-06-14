@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryLight">#008577</color>
-    <color name="colorPrimaryDarkLight">#00574B</color>
-    <color name="colorAccentLight">#E91E63</color>
+    <color name="colorPrimary">#C6AC8F</color>
+    <color name="colorPrimaryDark">#5E503F</color>
+    <color name="colorAccent">#D12A2A</color>
 
-    <color name="colorPrimaryDark">#610000</color>
-    <color name="colorPrimaryDarkDark">#000000</color>
-    <color name="colorAccentDark">#39B7DF</color>
+    <color name="colorToolbarLines">#0A0908</color>
+    <color name="colorNoteCardView">#C4B4A9</color>
 
-    <color name="dark_gray">#555555</color>
-    <color name="light_gray">#F0F0F0</color>
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="light_blue">#52D7FF</color>
-    <color name="average_gray">#B4B4B4</color>
-    <color name="placeholder">#FFFFFF</color>
+    <color name="colorBackground">#EAE0D5</color>
+    <color name="colorEditTextHighlight">#B4B4B4</color>
+    <color name="colorEditText">#0A0908</color>
+
 </resources>

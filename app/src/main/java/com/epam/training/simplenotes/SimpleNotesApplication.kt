@@ -1,6 +1,7 @@
 package com.epam.training.simplenotes
 
 import android.app.Application
+import android.support.v7.app.AppCompatDelegate
 import com.epam.training.simplenotes.koin.firebaseModule
 import com.epam.training.simplenotes.koin.loginModule
 import com.epam.training.simplenotes.koin.mainModule
@@ -12,6 +13,8 @@ import org.koin.core.context.startKoin
 
 class SimpleNotesApplication : Application() {
     override fun onCreate() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO)
+
         super.onCreate()
 
         startKoin {
