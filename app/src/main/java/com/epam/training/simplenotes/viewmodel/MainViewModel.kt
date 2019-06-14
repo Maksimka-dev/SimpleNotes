@@ -46,7 +46,7 @@ class MainViewModel(private val mainModel: MainModel) : ViewModel() {
                 _recyclerViewAction.postValue(RecyclerViewAction.UpdateItems(items))
             },
             {
-                Log.e("MainViewModel", it.message)
+                _refreshingAction.postValue(RefreshingViewAction.Stop)
             }
         )
     }
